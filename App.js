@@ -34,14 +34,14 @@ function MoviesScreen({ navigation }) {
     getMovies();
   }, []);
 
-return (
+  return (
     <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
       {isLoading ? (
         <ActivityIndicator />
       ) : (
         <View>
           {data.map((item) => (
-          <Text key={item.id}>{item.title} - {item.releaseYear}</Text>
+            <Text key={item.id}>{item.title} - {item.releaseYear}</Text>
           ))}
         </View>
       )}
@@ -69,15 +69,15 @@ const getMovies = async () => {
 };
 
 export default function App() {
-return (
-  <NavigationContainer>
-    <Stack.Navigator initialRouteName= "Home">
-      <Stack.Screen name="Home" component={HomeScreen} />
-      <Stack.Screen name="Details" component={DetailsScreen} />
-      <Stack.Screen name="Movies" component={MoviesScreen} />
-    </Stack.Navigator>
-  </NavigationContainer>
-);
+  return (
+    <NavigationContainer>
+      <Stack.Navigator initialRouteName="Home">
+        <Stack.Screen name="Home" component={HomeScreen} />
+        <Stack.Screen name="Details" component={DetailsScreen} />
+        <Stack.Screen name="Movies" component={MoviesScreen} />
+      </Stack.Navigator>
+    </NavigationContainer>
+  );
 }
 const Stack = createNativeStackNavigator();
 
