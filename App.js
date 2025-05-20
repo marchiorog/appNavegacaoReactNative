@@ -1,14 +1,42 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
+function HomeScreen({ navigation }) {
+return (
+  <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
+    <Text>Home Screen</Text>
+    <Button
+      title="Ir para detalhes"
+      onPress={() => navigation.navigate("Details")}
+    ></Button>
+  </View>
+);
 }
+
+
+function DetailsScreen({ navigation }) {
+return (
+  <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
+    <Text>Details Screen</Text>
+    <Button
+      title="Voltar para home"
+      onPress={() => navigation.goBack()}
+    ></Button>
+  </View>
+);
+}
+
+export default function App() {
+return (
+  <NavigationContainer>
+    <Stack.Navigator>
+      <Stack.Screen name="Home" component={HomeScreen} />
+      <Stack.Screen name="Details" component={DetailsScreen} />
+    </Stack.Navigator>
+  </NavigationContainer>
+);
+}
+const Stack = createNativeStackNavigator();
 
 const styles = StyleSheet.create({
   container: {
